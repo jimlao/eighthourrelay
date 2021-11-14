@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "hourrelay": {
+      "hosting": {
+        "eight-hour-relay": [
+          "hourrelay"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "hourrelay"
+  }
+}
