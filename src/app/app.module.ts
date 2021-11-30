@@ -21,7 +21,7 @@ import { RegisterRunnerComponent } from './registration/register-runner.componen
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInSuccessUrl: '/registration',
+  signInSuccessUrl: '/',
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
