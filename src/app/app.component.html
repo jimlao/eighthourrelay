@@ -1,7 +1,9 @@
 <ul>
-  <li class="text" *ngFor="let runner of runners | async">
+  <li class="text" *ngFor="let runner of runners | async" (click) = 'signOut()'>
     {{runner.Email}}
   </li>
 </ul>
 
 <firebase-ui></firebase-ui>
+
+<router-outlet></router-outlet>

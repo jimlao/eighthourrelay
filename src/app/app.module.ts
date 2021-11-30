@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,12 +14,14 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
+import { ManageTeamComponent } from './registration/manage-team.component';
+import { RegisterRunnerComponent } from './registration/register-runner.component';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInSuccessUrl: 'https://www.google.ca',
+  signInSuccessUrl: '/registration',
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -40,14 +43,23 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
-  tosUrl: 'https://www.google.ca',
+  tosUrl: '/',
   privacyPolicyUrl: 'https://www.google.ca',
   credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
 };
 
+const appRoutes : Routes = [
+  { path: 'registration', component: ManageTeamComponent },
+  { path: 'registration/:tid', component: RegisterRunnerComponent },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' }
+];
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ManageTeamComponent,
+    RegisterRunnerComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +74,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     provideFunctions(() => getFunctions()),
     provideMessaging(() => getMessaging()),
     AngularFireAuthModule,
-    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig),
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [
     // { provide: USE_AUTH_EMULATOR, useValue: !environment.production ? ['http://localhost', 9099] : undefined },
