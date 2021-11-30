@@ -14,14 +14,14 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
-import { AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR } from '@angular/fire/compat/auth';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 import { ManageTeamComponent } from './registration/manage-team.component';
 import { RegisterRunnerComponent } from './registration/register-runner.component';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInSuccessUrl: 'https://www.google.ca',
+  signInSuccessUrl: '/registration',
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -43,7 +43,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     // firebase.auth.PhoneAuthProvider.PROVIDER_ID,
     // firebaseui.auth.AnonymousAuthProvider.PROVIDER_ID
   ],
-  tosUrl: 'https://www.google.ca',
+  tosUrl: '/',
   privacyPolicyUrl: 'https://www.google.ca',
   credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
 };
