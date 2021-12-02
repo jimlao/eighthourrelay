@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { global } from './shared/models/global';
-import { IRunner, Runner } from './shared/models/runner';
+import { global } from '../models/global';
+import { IRunner, Runner } from '../models/runner';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
