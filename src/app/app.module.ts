@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppComponent } from './views/app.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
@@ -16,12 +16,11 @@ import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
-import { ManageTeamComponent } from './registration/manage-team.component';
-import { RegisterRunnerComponent } from './registration/register-runner.component';
+import { RegisterComponent } from './views/registration/register/register.component';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
-  signInSuccessUrl: '/registration',
+  signInSuccessUrl: '/',
   signInFlow: 'popup',
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -49,17 +48,15 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 };
 
 const appRoutes : Routes = [
-  { path: 'registration', component: ManageTeamComponent },
-  { path: 'registration/:tid', component: RegisterRunnerComponent },
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '**', redirectTo: '/', pathMatch: 'full' }
+  { path: 'register', component: RegisterComponent },
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  { path: '**', redirectTo: '/register', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ManageTeamComponent,
-    RegisterRunnerComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
