@@ -12,21 +12,20 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   runners: Observable<any[]>;
-  afAuth: AngularFireAuth;
   title = 'eight-hour-relay'; 
- 
-  constructor(firestore: AngularFirestore, afAuth: AngularFireAuth, private router: Router) {
-    this.runners = firestore.collection('runners').valueChanges();
-    this.afAuth = afAuth;
+  runner: IRunner | null = null;
+
+  constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth, private router: Router) {
+    this.runners = this.firestore.collection('runners').valueChanges();
   }
 
   ngOnInit(): void {
     this.afAuth.user.subscribe(result=>{
      if (result && result.email) {
-       global.currentRunner = new Runner();
-       global.currentRunner.email = result.email;
-       //window.location.href = '/registration';
-       this.router.navigate(['/registration']);
+       this.runner = new Runner();
+       this.runner.email = result.email;
+
+       global.currentRunner = this.runner;
      }
 
     });
@@ -34,5 +33,7 @@ export class AppComponent implements OnInit{
 
   signOut() : void  {
     this.afAuth.signOut();
+    global.currentRunner = null;
+    this.runner = null;
   }
 }

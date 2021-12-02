@@ -1,8 +1,13 @@
-<ul>
+<!-- <ul>
   <li class="text" *ngFor="let runner of runners | async" (click) = 'signOut()'>
     {{runner.Email}}
   </li>
-</ul>
+</ul> -->
+
+<div *ngIf='runner'>
+  <label>{{runner.email}}</label>
+  <button  (click)='signOut()'>Sign Out</button>
+</div>
 
 <firebase-ui></firebase-ui>
 

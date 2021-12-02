@@ -16,8 +16,9 @@ import { AngularFireAnalyticsModule } from '@angular/fire/compat/analytics';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
-import { ManageTeamComponent } from './registration/manage-team.component';
-import { RegisterRunnerComponent } from './registration/register-runner.component';
+// import { ManageTeamComponent } from './registration/manage-team.component';
+// import { RegisterRunnerComponent } from './registration/register-runner.component';
+import { RegisterComponent } from './registration/register/register.component';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -49,17 +50,19 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 };
 
 const appRoutes : Routes = [
-  { path: 'registration', component: ManageTeamComponent },
-  { path: 'registration/:tid', component: RegisterRunnerComponent },
-  { path: '', redirectTo: '/', pathMatch: 'full' },
-  { path: '**', redirectTo: '/', pathMatch: 'full' }
+  { path: 'register', component: RegisterComponent },
+  // { path: 'registration', component: ManageTeamComponent },
+  // { path: 'registration/:tid', component: RegisterRunnerComponent },
+  { path: '', redirectTo: '/register', pathMatch: 'full' },
+  { path: '**', redirectTo: '/register', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ManageTeamComponent,
-    RegisterRunnerComponent
+    // ManageTeamComponent,
+    // RegisterRunnerComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

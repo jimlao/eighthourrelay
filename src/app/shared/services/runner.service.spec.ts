@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RunnerServicesService } from './runner-services.service';
+import { RunnerServicesService } from './runner.service';
 
 describe('RunnerServicesService', () => {
   let service: RunnerServicesService;
