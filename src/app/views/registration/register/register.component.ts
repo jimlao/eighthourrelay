@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IRunner } from 'src/app/models/runner';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { IRunner, Runner } from 'src/app/models/runner';
 import { AppStateService } from 'src/app/services/app-state.service';
 
 @Component({
@@ -10,12 +11,12 @@ import { AppStateService } from 'src/app/services/app-state.service';
 export class RegisterComponent implements OnInit {
 
   public runner: IRunner | null = null;
-  constructor() { }
+  constructor(private afAuth: AngularFireAuth) {
+  }
 
   ngOnInit(): void {
     AppStateService.currentRunner.subscribe(runner => {
       this.runner = runner;
     })
   }
-
 }

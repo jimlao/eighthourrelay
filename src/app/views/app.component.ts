@@ -13,12 +13,19 @@ export class AppComponent implements OnInit{
   title = 'eight-hour-relay'; 
   runner: IRunner | null = null;
 
-  constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth, private appStateService: AppStateService) {
-   }
+  constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth) {
+  }
 
   ngOnInit(): void {
     //this.runners = this.firestore.collection('runners').valueChanges();
- }
+
+    this.afAuth.user.subscribe(result=>{
+      if (result) {
+        this.runner = result ? new Runner(result) : null;
+        AppStateService.currentRunner.next(this.runner);
+      }
+    });               
+  }
 
   signOut() : void  {
     this.afAuth.signOut();

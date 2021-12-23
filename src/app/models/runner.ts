@@ -1,4 +1,5 @@
 import firebase from 'firebase/compat/app';
+//import { Interface } from 'readline';
 export interface IRunner {
     id : string;
     email : string | null;
@@ -23,3 +24,23 @@ export class Runner implements IRunner {
         this.team = '';
     }
 }
+
+
+export class DataStore {
+    public static teams: ITeam[] = [];
+}
+
+export interface ITeam {
+    name: string;
+    runners: IRunner[]
+}
+
+export class Team implements ITeam {
+    public runners: IRunner[];
+
+    constructor(public name: string)
+    {
+        this.runners= [];
+    }
+}
+  

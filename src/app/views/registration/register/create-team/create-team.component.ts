@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { AppStateService } from 'src/app/services/app-state.service'; 
+import { RunnerService } from 'src/app/services/runner.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-team',
   templateUrl: './create-team.component.html',
@@ -8,7 +10,7 @@ import { NgForm } from '@angular/forms';
 export class CreateTeamComponent implements OnInit {
   public teamName: string = '';
 
-  constructor() { 
+  constructor(private runnerService: RunnerService, private router: Router) { 
     this.teamName = '';
   }
 
@@ -16,7 +18,8 @@ export class CreateTeamComponent implements OnInit {
   }
 
   onSubmit(): void { 
-    alert("onSubmit" + this.teamName);
+    this.runnerService.NewTeam(this.teamName);
+    this.router.navigate(["register"]);
   }
 
   onCancel(): void {

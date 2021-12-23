@@ -1,7 +1,10 @@
 <label>new team name</label>
 
+<div>
+    <input type="text" [(ngModel)]='teamName' />
+</div>
 
-<input type="text" [(ngModel)]='teamName' />
-
-<!-- <button (click)="onSubmit()">submit</button> -->
-<button (click)="onCancel">cancel</button>
+<div>
+    <button (click)="onSubmit()">submit</button>
+    <button (click)="onCancel()">cancel</button>
+</div>
