@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -17,6 +18,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 import { RegisterComponent } from './views/registration/register/register.component';
+import { CreateTeamComponent } from './views/registration/register/create-team/create-team.component';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -56,10 +58,12 @@ const appRoutes : Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    RegisterComponent
+    RegisterComponent,
+    CreateTeamComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAnalyticsModule,

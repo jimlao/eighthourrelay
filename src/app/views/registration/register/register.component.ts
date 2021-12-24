@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { IRunner, Runner } from 'src/app/models/runner';
+import { AppStateService } from 'src/app/services/app-state.service';
 
 @Component({
   selector: 'app-register',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  public runner: IRunner | null = null;
+  constructor(private afAuth: AngularFireAuth) {
   }
 
+  ngOnInit(): void {
+    AppStateService.currentRunner.subscribe(runner => {
+      this.runner = runner;
+    })
+  }
 }
