@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IRunner } from 'src/app/models/runner';
 import { AppStateService } from 'src/app/services/app-state.service';
 
@@ -13,7 +14,7 @@ export class ManageTeamComponent implements OnInit {
   public taskTitle: string = '';
   public teamUrl: string = 'sldkfjsdlkfjsdlkfjsdlfkj';
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     AppStateService.currentRunner.subscribe(runner => {
@@ -32,7 +33,10 @@ export class ManageTeamComponent implements OnInit {
   }
 
   onRegisterRunner(): void {
-    alert("onRegisterRunner()");
+    if (this.runner) {
+      this.runner.isRegistering = true;
+      this.router.navigate(['register']);
+    }
   }
 
   copyTeamUrl(): void {

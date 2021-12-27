@@ -4,6 +4,7 @@ export interface IRunner {
     id : string;
     email : string | null;
     isRegistered : boolean;
+    isRegistering: boolean;
     isCaptian : boolean;
     team : string;
 }
@@ -12,6 +13,7 @@ export class Runner implements IRunner {
     id: string = '';
     email: string | null = null;
     isRegistered: boolean = false;
+    isRegistering: boolean = false;
     isCaptian: boolean = false;
     team: string = '';
     

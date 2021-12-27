@@ -1,9 +1,13 @@
 <p>register works!</p>
 
-<div *ngIf='runner!=null && !runner.isCaptian && !runner.isRegistered'>
+<div *ngIf='runner!=null && !runner.isCaptian && !runner.isRegistered && !runner.isRegistering'>
     <app-create-team></app-create-team>
 </div>
 
-<div *ngIf='runner!=null && runner.isCaptian'>
+<div *ngIf='runner!=null && runner.isCaptian && !runner.isRegistering'>
     <app-manage-team></app-manage-team>
+</div>
+
+<div *ngIf='runner!=null && runner.isRegistering'>
+    <app-register-runner></app-register-runner>
 </div>
