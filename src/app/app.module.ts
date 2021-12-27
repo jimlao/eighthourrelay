@@ -19,6 +19,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { firebase, firebaseui, FirebaseUIModule } from 'firebaseui-angular';
 import { RegisterComponent } from './views/registration/register/register.component';
 import { CreateTeamComponent } from './views/registration/register/create-team/create-team.component';
+import { ManageTeamComponent } from './views/registration/register/manage-team/manage-team.component';
+import { RegisterRunnerComponent } from './views/registration/register/register-runner/register-runner.component';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -59,7 +61,9 @@ const appRoutes : Routes = [
   declarations: [
     AppComponent,
     RegisterComponent,
-    CreateTeamComponent
+    CreateTeamComponent,
+    ManageTeamComponent,
+    RegisterRunnerComponent
   ],
   imports: [
     BrowserModule,

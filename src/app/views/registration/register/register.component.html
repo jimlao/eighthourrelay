@@ -3,3 +3,7 @@
 <div *ngIf='runner!=null && !runner.isCaptian && !runner.isRegistered'>
     <app-create-team></app-create-team>
 </div>
+
+<div *ngIf='runner!=null && runner.isCaptian'>
+    <app-manage-team></app-manage-team>
+</div>

@@ -1,0 +1,19 @@
+<p>manage-team works!</p>
+
+<div>
+    <button (click)="onSwitch()">{{taskTitle}}</button>
+</div>
+
+<div *ngIf='isUserPortion'>
+    <div *ngIf='runner != null && !runner.isRegistered'>
+        <button (click)="onRegisterRunner()">Join the team</button>
+    </div>
+</div>
+
+<div *ngIf='!isUserPortion'>
+    <div>Team Url</div>
+    <div>
+        <input type="text" [ngModel]='teamUrl' disabled='true' />
+        <button (click)="copyTeamUrl()">Copy</button>
+    </div>
+</div>
