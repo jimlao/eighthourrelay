@@ -21,6 +21,7 @@ import { RegisterComponent } from './views/registration/register/register.compon
 import { CreateTeamComponent } from './views/registration/register/create-team/create-team.component';
 import { ManageTeamComponent } from './views/registration/register/manage-team/manage-team.component';
 import { RegisterRunnerComponent } from './views/registration/register/register-runner/register-runner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
@@ -81,6 +82,7 @@ const appRoutes : Routes = [
     AngularFireAuthModule,
     FirebaseUIModule.forRoot(firebaseUiAuthConfig),
     RouterModule.forRoot(appRoutes),
+    BrowserAnimationsModule,
   ],
   providers: [
     // { provide: USE_AUTH_EMULATOR, useValue: !environment.production ? ['http://localhost', 9099] : undefined },
